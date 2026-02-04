@@ -58,34 +58,24 @@ pip install deepspeed
 python Preprocess/download_cellxgene_adata.py \
 --datadir ./cellxgene
 ```
-- Output: `./cellxgene/<dataset_id>/adata.h5ad`
-
-2. Calculate DE per dataset.
+2. Calculate DE per dataset & Concatenate DE profiles.
 ```bash
 python Preprocess/cal_de_per_dataset.py \
 --datadir ./cellxgene \
 --dataset_id <DATASET_ID> \
 --outputdir ./cellxgene/processed_de_per_dataset
 ```
-- Output: `./cellxgene/processed_de_per_dataset/processed_de_<dataset_id>.pt`
-
-3. Concatenate DE profiles.
-```bash
 python Preprocess/concat_de_profiles.py \
 --datadir ./cellxgene/processed_de_per_dataset \
 --outputdir ./cellxgene/concat_de
 ```
-- Output: `./cellxgene/concat_de/all_processed_de_profiles_compressed.h5`
-
-4. Pretrain scDEBART (DeepSpeed).
+3. Pretrain scDEBART (DeepSpeed).
 ```bash
 deepspeed --num_gpus <N> Pretrain/pretrain_scDEBART.py \
 --input_train_h5_path ./cellxgene/concat_de/all_processed_de_profiles_compressed.h5 \
 --outputdir ./cellxgene/pretrain_output \
 --deepspeed_config Pretrain/deepspeed_config.json
 ```
-- Output: `./cellxgene/pretrain_output/`
-
 ## Quickstart: Perturb-seq Fine-tuning Pipeline
 
 1. Quality control (logs append to `./perturbseq/<dataset>/filtering_metadata.txt`).
