@@ -42,11 +42,12 @@ pyyaml
 h5py
 ```
 
-## Optional (recommended for training at scale)
+### Optional (recommended for training at scale)
 - deepspeed
 
 ```bash
 pip install deepspeed
+```
 
 # Quickstart
 
