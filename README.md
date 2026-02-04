@@ -49,6 +49,12 @@ h5py
 pip install deepspeed
 ```
 
+# Dataset
+
+The dataset is available on Hugging Face Datasets: `Jieun-S/scDEBART`.
+
+
+
 # Quickstart
 
 ## 1. Pre-train with CellxGene database
@@ -64,7 +70,7 @@ python Preprocess/cal_de_per_dataset.py \
 --datadir ./cellxgene \
 --dataset_id <DATASET_ID> \
 --outputdir ./cellxgene/processed_de_per_dataset
-```
+
 python Preprocess/concat_de_profiles.py \
 --datadir ./cellxgene/processed_de_per_dataset \
 --outputdir ./cellxgene/concat_de
@@ -76,7 +82,12 @@ deepspeed --num_gpus <N> Pretrain/pretrain_scDEBART.py \
 --outputdir ./cellxgene/pretrain_output \
 --deepspeed_config Pretrain/deepspeed_config.json
 ```
-## Quickstart: Perturb-seq Fine-tuning Pipeline
+- Output: `./cellxgene/pretrain_output/loss.txt`
+- Output: `./cellxgene/pretrain_output/model_weights/model_weights_epoch_<N>.pt`
+- Output: `./cellxgene/pretrain_output/best_model_weights_epoch_22.pt`
+
+
+## 2. Fine-tuning with Perturb-seq data
 
 1. Quality control (logs append to `./perturbseq/<dataset>/filtering_metadata.txt`).
 ```bash
