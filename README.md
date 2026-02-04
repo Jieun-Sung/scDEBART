@@ -6,6 +6,48 @@
   <img src="final_scheme.png" width="900" alt="scDEBART overview"/>
 </p>
 
+# Installation
+
+## Option A: Create a conda environment (recommended)
+We provide a lightweight conda environment specification.
+
+```bash
+conda env create -f scDEBART.yml
+conda activate scDEBART
+```
+
+## Option B: Install required packages via pip
+scDEBART is implemented in PyTorch. We use PyTorch 2.5.1 with CUDA 12.1.
+
+### Required packages
+```bash
+torch==2.5.1
+numpy
+scipy
+pandas
+scikit-learn
+anndata
+scanpy
+scvi-tools
+umap-learn
+transformers
+accelerate
+datasets
+tokenizers
+safetensors
+huggingface_hub
+einops
+tqdm
+pyyaml
+h5py
+```
+
+## Optional (recommended for training at scale)
+- deepspeed
+
+```bash
+pip install deepspeed
+
 # Quickstart
 
 ## Quickstart: Cellxgene Pretrain Pipeline
