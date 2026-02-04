@@ -51,7 +51,7 @@ pip install deepspeed
 
 # Quickstart
 
-## Quickstart: Cellxgene Pretrain Pipeline
+## 1. Pre-train with CellxGene database
 
 1. Download cellxgene data.
 ```bash
