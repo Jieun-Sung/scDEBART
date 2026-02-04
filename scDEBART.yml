@@ -172,4 +172,4 @@ dependencies:
   - xorg-libx11=1.8.12
   - tzdata=2025b
   - anndata=0.11.4
-prefix: /home01/k218a01/.conda/envs/DEGTransformer
+prefix: scDEBART
