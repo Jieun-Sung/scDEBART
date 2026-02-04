@@ -9,7 +9,7 @@
 # Installation
 
 ## Option A: Create a conda environment (recommended)
-We provide a lightweight conda environment specification.
+We provide a conda environment specification to ensure reproducibility.
 
 ```bash
 conda env create -f scDEBART.yml
