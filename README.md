@@ -191,4 +191,21 @@ Must contain:
 ### Outputs
 - Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/model_weights`
 - Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/tuning_loss.txt`
-- Output: `./perturbseq/Replogle_K562/Replogle_K562_test_gene_perturb_predictions.npz`
+- Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/Replogle_K562_test_gene_perturb_predictions.npz`
+
+## 4. Evaluation
+```bash
+python Finetune_perturbseq/evaluate_scDEBART.py \
+--pred_npz ./perturbseq/Replogle_K562/finetuned_model/seed_30/Replogle_K562_test_gene_perturb_predictions.npz \
+--real_lfc_pkl ./perturbseq/Replogle_K562/DE_results/DE_true_logFC_dataframe_masked_low_nonzero_to_zero_dataframe.pkl \
+--outputdir ./perturbseq/Replogle_K562/finetuned_model/seed_30 \
+--gene_id_dict_pkl ./data/ens2geneid.pkl
+```
+
+### Outputs
+- Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/scDEBART_summary_correlation.csv`
+- Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/scDEBART_summary_mse.csv`
+- Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/scDEBART_summary_ef.csv`
+- Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/scDEBART_summary_sign_metrics.csv`
+
+
