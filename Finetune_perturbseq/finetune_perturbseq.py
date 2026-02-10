@@ -403,7 +403,6 @@ def main():
     parser = deepspeed.add_config_arguments(parser)
     parser.add_argument("--local_rank", type=int, default=-1)
     parser.add_argument("--dataset", type=str, required=True)
-    parser.add_argument("--input_adata", type=str, required=True)
     parser.add_argument("--de_result_dir", type=str, required=True)
     parser.add_argument("--pretrained_model_dir", type=str, required=True)
     parser.add_argument("--outputdir", type=str, required=True)
@@ -439,22 +438,6 @@ def main():
     os.makedirs(args.outputdir, exist_ok=True)
     model_weights_dir = os.path.join(args.outputdir, "model_weights")
     os.makedirs(model_weights_dir, exist_ok=True)
-    dataset_root = os.path.abspath(os.path.join(args.outputdir, os.pardir))
-    log_path = os.path.join(dataset_root, "filtering_metadata.txt")
-    append_filter_log(
-        log_path,
-        [
-            "Finetune configuration",
-            f"dataset: {args.dataset}",
-            f"input_adata: {args.input_adata}",
-            f"de_result_dir: {args.de_result_dir}",
-            f"pretrained_model_dir: {args.pretrained_model_dir}",
-            f"outputdir: {args.outputdir}",
-            f"pert_type: {pert_type}",
-            f"train_val_test_dict_path: {args.train_val_test_dict_path}",
-            "----------------------------------------------------------------------",
-        ],
-    )
     h5_data_path = os.path.join(args.de_result_dir, "de_masked_high_zero_logfc_to_zero.h5")
     hvg_path = os.path.join(args.de_result_dir, f"hvg_geneids_{args.num_HVG}.pkl")
     with open(hvg_path, "rb") as f:
@@ -467,9 +450,9 @@ def main():
     train_ids = [ens2geneid[g] for g in train_ids_ens if g in ens2geneid]
     val_ids = [ens2geneid[g] for g in val_ids_ens if g in ens2geneid]
     test_ids = [ens2geneid[g] for g in test_ids_ens if g in ens2geneid]
-    pt_files = [f for f in os.listdir(args.pretrained_model_dir) if f.startswith("best_model_weights_epoch_")]
+    pt_files = [f for f in os.listdir(args.pretrained_model_dir) if f.startswith("best_pretrained_scDEBART_model_weights")]
     if len(pt_files) == 0:
-        pt_files = [f for f in os.listdir(args.pretrained_model_dir) if f.startswith("model_weights_epoch_")]
+        pt_files = [f for f in os.listdir(args.pretrained_model_dir) if f.startswith("best_model_weights_epoch_")]
     if len(pt_files) == 0:
         raise FileNotFoundError("No pretrained weights found in pretrained_model_dir")
     pt_files.sort()
@@ -677,7 +660,7 @@ def main():
                 true_ctrl_exp_dict.setdefault(pert_gene_id, []).append(ctrl_valid.astype(np.float16))
                 gene_ids_dict.setdefault(pert_gene_id, []).append(valid_genes)
     if args.local_rank == 0:
-        pred_path = os.path.join(dataset_root, f"{args.dataset}_test_gene_perturb_predictions.npz")
+        pred_path = os.path.join(args.outputdir, f"{args.dataset}_test_gene_perturb_predictions.npz")
         np.savez_compressed(
             pred_path,
             pred_logfc=pred_logfc_dict,
