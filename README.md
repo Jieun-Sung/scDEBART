@@ -145,12 +145,14 @@ python Preprocess_perturbseq/cal_de_for_perturbseq.py \
 ```bash
 deepspeed --num_gpus <N> Finetune_perturbseq/finetune_perturbseq.py \
 --dataset Replogle_K562 \
---input_adata ./perturbseq/Replogle_K562/rawcount_adata_final_selected_cells_only.h5ad \
 --de_result_dir ./perturbseq/Replogle_K562/DE_results \
 --pretrained_model_dir ./cellxgene/pretrain_output \
---outputdir ./perturbseq/Replogle_K562/Finetune_results \
+--outputdir ./perturbseq/Replogle_K562/finetuned_model/seed_30 \
 --deepspeed_config Finetune_perturbseq/deepspeed_config_fortuning.json \
+--train_val_test_dict_path ./perturbseq/Replogle_K562/finetuned_model/seed_30/Replogle_K562_GEARS_split_30_0.8_ensemble.pkl \
+--num_HVG 5000 \
 --pert_type INH
 ```
-- Output: `./perturbseq/Replogle_K562/Finetune_results/`
+- Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/model_weights`
+- Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/tuning_loss.txt`
 - Output: `./perturbseq/Replogle_K562/Replogle_K562_test_gene_perturb_predictions.npz`
