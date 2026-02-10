@@ -87,7 +87,7 @@ deepspeed --num_gpus <N> Pretrain/pretrain_scDEBART.py \
 - Output: `./cellxgene/pretrain_output/best_model_weights_epoch_22.pt`
 
 
-## 2. Fine-tuning with Perturb-seq data
+## 2. Preprocess Perturb-seq data
 
 1. Quality control (logs append to `./perturbseq/<dataset>/filtering_metadata.txt`).
 ```bash
@@ -141,7 +141,20 @@ python Preprocess_perturbseq/cal_de_for_perturbseq.py \
 - Output: `./perturbseq/Replogle_K562/DE_results/de_masked_high_zero_logfc_to_zero.h5`
 - Output: `./perturbseq/Replogle_K562/DE_results/hvg_geneids_5000.pkl`
 
-6. Fine-tune scDEBART (DeepSpeed).
+### Contents of the DE (HDF5) File
+
+The DE result file (e.g. `de_masked_high_zero_logfc_to_zero.h5`) provides all information required to construct training samples for perturbation modeling.
+
+#### 1. Metadata (HDF5 attributes)
+- `num_samples`: Total number of perturbation samples stored in the file
+
+#### 2. Sample-level datasets (indexed by sample)
+- `pertubed_gene_id`: ENSEMBL gene ID (integer-encoded) of the perturbed gene for each sample
+- `gene_ids`: List of ENSEMBL gene IDs (integer-encoded) considered for prediction in that sample
+- `logfc`: Target scVI-calculated log fold-change values for each gene after perturbation
+- `normalized_expr_group2`: scVI-denoised unperturbed gene expression values 
+
+## 3. Fine-tune scDEBART
 ```bash
 deepspeed --num_gpus <N> Finetune_perturbseq/finetune_perturbseq.py \
 --dataset Replogle_K562 \
