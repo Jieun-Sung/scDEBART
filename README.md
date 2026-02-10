@@ -56,8 +56,7 @@ All data required to run the preprocessing, training, fine-tuning, and evaluatio
 - [**Hugging Face dataset**](https://huggingface.co/datasets/Jieun-S/scDEBART/tree/main)
 
 This repository includes pretrained model weights ([link](https://huggingface.co/datasets/Jieun-S/scDEBART/blob/main/cellxgene/pretrain_output/best_pretrained_scDEBART_model_weights.pt)), perturb-seq DE results ([Nadig HepG2](https://huggingface.co/datasets/Jieun-S/scDEBART/blob/main/perturb_seq/Nadig_HepG2/DE_results/de_masked_high_zero_logfc_to_zero.h5), [Nadig Jurkat](https://huggingface.co/datasets/Jieun-S/scDEBART/blob/main/perturb_seq/Nadig_Jurkat/DE_results/de_masked_high_zero_logfc_to_zero.h5),[Replogle K562](https://huggingface.co/datasets/Jieun-S/scDEBART/blob/main/perturb_seq/Replogle_K562/DE_results/de_masked_high_zero_logfc_to_zero.h5),[Replogle RPE1](https://huggingface.co/datasets/Jieun-S/scDEBART/blob/main/perturb_seq/Replogle_RPE1/DE_results/de_masked_high_zero_logfc_to_zero.h5),
-[Norman](https://huggingface.co/datasets/Jieun-S/scDEBART/blob/main/perturb_seq/norman/DE_results/de_masked_high_zero_logfc_to_zero.h5),
-), train/validation/test splits, and all auxiliary files needed to reproduce the scDEBART pipeline.
+[Norman](https://huggingface.co/datasets/Jieun-S/scDEBART/blob/main/perturb_seq/norman/DE_results/de_masked_high_zero_logfc_to_zero.h5)), train/validation/test splits, and all auxiliary files needed to reproduce the scDEBART pipeline.
 
 # Quickstart
 
