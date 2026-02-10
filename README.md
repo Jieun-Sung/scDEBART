@@ -153,6 +153,29 @@ deepspeed --num_gpus <N> Finetune_perturbseq/finetune_perturbseq.py \
 --num_HVG 5000 \
 --pert_type INH
 ```
+
+### Prerequisites 
+
+#### 1. DE result directory (`--de_result_dir`)
+Must contain:
+- `de_masked_high_zero_logfc_to_zero.h5`
+- `hvg_geneids_{num_HVG}.pkl`
+
+#### 2. Pretrained model directory (`--pretrained_model_dir`)
+Must contain:
+- `best_pretrained_scDEBART_model_weights.pt`
+
+#### 3. Train/Val/Test split file (`--train_val_test_dict_path`)
+- Pickle file with keys: `train`, `val`, `test`
+- Each value is a list of **ENSEMBL gene IDs**
+- For Norman double perturbations, IDs can be in the form:
+  - `ENSG_A+ENSG_B`
+
+#### 4. Number of HVGs (`--num_HVG`)
+- Norman dataset: `3079`
+- All other datasets: `5000`
+
+### Outputs
 - Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/model_weights`
 - Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/tuning_loss.txt`
 - Output: `./perturbseq/Replogle_K562/Replogle_K562_test_gene_perturb_predictions.npz`
