@@ -46,7 +46,6 @@ dependencies:
       - safetensors
       - huggingface_hub
       - deepspeed
-      - wandb
       - einops
       - sentencepiece
       - scvi-tools
