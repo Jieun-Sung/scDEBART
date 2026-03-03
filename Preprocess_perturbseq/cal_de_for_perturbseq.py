@@ -1,23 +1,3 @@
-'''
-scrdir="/spstorage/USERS/sung/projects/DEG_Transformer/OSKM_reprogramming/script"
-python "${scrdir}/cal_de.py" --dataset liver --ncore 80 --de_outputdir "/spstorage/USERS/sung/projects/DEG_Transformer/OSKM_reprogramming/data/de_output/liver" > cal_de_liver.log 2>&1 &
-python "${scrdir}/cal_de.py" --dataset thymus --ncore 80 --de_outputdir "/spstorage/USERS/sung/projects/DEG_Transformer/OSKM_reprogramming/data/de_output/thymus" > cal_de_thymus.log 2>&1 &
-python "${scrdir}/cal_de.py" --dataset spleen --ncore 80 --de_outputdir "/spstorage/USERS/sung/projects/DEG_Transformer/OSKM_reprogramming/data/de_output/spleen" > cal_de_spleen.log 2>&1 &
-wait
-
-python ${scrdir}/cal_de.py \
---dataset bone_marrow \
---ncore 60 \
---de_outputdir /spstorage/USERS/sung/projects/DEG_Transformer/OSKM_reprogramming/data/de_output/bone_marrow
-
-
-python ${scrdir}/cal_de.py \
---dataset kidney \
---ncore 60 \
---de_outputdir /spstorage/USERS/sung/projects/DEG_Transformer/OSKM_reprogramming/data/de_output/kidney
-
-'''
-
 import os
 import random
 import itertools
