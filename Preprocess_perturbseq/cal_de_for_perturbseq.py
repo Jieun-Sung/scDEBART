@@ -432,14 +432,14 @@ def main():
     _g_ens2idx_dict = {ens: idx for idx, ens in _g_ens2geneid.items()}
     _g_gene_info = pd.read_csv(os.path.join("/spstorage/USERS/sung/projects/DEG_Transformer/cellxgene", "human_allgene_info.csv"), sep="\t")
     _g_dataset = args.dataset
-    _g_sampling_each = 20
+    _g_sampling_each = 1000
 
     clusters = _g_adata.obs["perturb_gene"].unique().tolist()
     non_targeting_clusters = [c for c in clusters if str(c).startswith("non-targeting")]
     other_clusters = [c for c in clusters if not str(c).startswith("non-targeting")]
     pairs = [(g1, g2) for g1 in other_clusters for g2 in non_targeting_clusters]
 
-    sampling_number_pergene = 10000
+    sampling_number_pergene = 50
     seeds = list(range(sampling_number_pergene))
     tasks = [(pair, seed) for pair in pairs for seed in seeds]
 
