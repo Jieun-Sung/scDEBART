@@ -1,5 +1,6 @@
 **scDEBART** is a **Transformer-based foundation model** for predicting **perturbation-induced gene expression** from single-cell transcriptomic data. It is **pretrained at scale on 66.6M of expression-change profiles**, learning to predict **log fold-changes (logFC) conditioned on basal expression**. By leveraging **large-scale scVI-denoised data**, scDEBART captures **gene co-regulation across basal states** and generalizes **perturbation responses across cell types, experimental settings, and perturbation modalities**.
 
+> 🎉 **Accepted at ICML 2026.** The paper, *scDEBART: Predicting in silico Single-Cell Perturbation Responses via Large-Scale Differential Expression Learning*, is available on [OpenReview](https://openreview.net/forum?id=pJyidZg93y).
 > 📌 Figure: overall architecture and training pipeline (pretrain on cellxgene → fine-tune on Perturb-seq).
 
 <p align="center">
