@@ -1,4 +1,4 @@
-**scDEBART** is a **Transformer-based foundation model** for predicting **perturbation-induced gene expression** from single-cell transcriptomic data. It is **pretrained at scale on 66.6M of expression-change profiles**, learning to predict **log fold-changes (logFC) conditioned on basal expression**. By leveraging **large-scale scVI-denoised data**, scDEBART captures **gene co-regulation across basal states** and generalizes **perturbation responses across cell types, experimental settings, and perturbation modalities**.
+**scDEBART** is a **Transformer-based foundation model** for predicting **perturbation-induced gene expression** from single-cell transcriptomic data. It is **pretrained at scale on 6.28M expression-change profiles derived from 66.6M cells**, learning to predict **log fold-changes (logFC) conditioned on basal expression**. By leveraging **large-scale scVI-denoised data**, scDEBART captures **gene co-regulation across basal states** and generalizes **perturbation responses across cell types, experimental settings, and perturbation modalities**.
 
 > 🎉 **Accepted at ICML 2026.** The paper, *scDEBART: Predicting in silico Single-Cell Perturbation Responses via Large-Scale Differential Expression Learning*, is available on [OpenReview](https://openreview.net/forum?id=pJyidZg93y).
 
@@ -212,5 +212,11 @@ python Finetune_perturbseq/evaluate_scDEBART.py \
 - Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/scDEBART_summary_mse.csv`
 - Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/scDEBART_summary_ef.csv`
 - Output: `./perturbseq/Replogle_K562/finetuned_model/seed_30/scDEBART_summary_sign_metrics.csv`
+
+## Contact
+
+For questions, collaboration inquiries, or other requests, please contact **Jieun Sung** at [jieunsung928@gmail.com](mailto:jieunsung928@gmail.com).
+
+For bug reports or feature requests, please open a [GitHub Issue](../../issues).
 
 
