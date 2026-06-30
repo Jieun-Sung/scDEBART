@@ -2,7 +2,7 @@
 
 > 🎉 **Accepted at ICML 2026.** The paper, *scDEBART: Predicting in silico Single-Cell Perturbation Responses via Large-Scale Differential Expression Learning*, is available on [OpenReview](https://openreview.net/forum?id=pJyidZg93y).
 
-> 📌 **Figure:** Overall architecture and training pipeline: pretraining on CELLxGENE followed by fine-tuning on Perturb-seq datasets.
+> 📌 Overall architecture and training pipeline: pretraining on CELLxGENE followed by fine-tuning on Perturb-seq datasets.
 
 <p align="center">
   <img src="final_scheme.png" width="900" alt="scDEBART overview"/>
